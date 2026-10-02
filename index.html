@@ -13,7 +13,22 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-WCKFWWQ16F');
+      
+      // Baca parameter UTM dari URL & kirim ke GA
+      const params = new URLSearchParams(window.location.search);
+      const utm = {
+        source: params.get('utm_source') || 'direct',
+        medium: params.get('utm_medium') || 'organic',
+        campaign: params.get('utm_campaign') || 'earnin_promo'
+      };
+      
+      gtag('config', 'G-WCKFWWQ16F', {
+        page_title: 'EarnIn Cash Advance',
+        page_location: window.location.href,
+        campaignSource: utm.source,
+        campaignMedium: utm.medium,
+        campaignName: utm.campaign
+      });
     </script>
 
     <!-- ==============================================
@@ -46,7 +61,7 @@
         .card ul{list-style:none}
         .card li{padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:1rem}
         .card li:last-child{border-bottom:none}
-        .cta{display:block;background:linear-gradient(135deg,#6c5ce7,#5a4bdb);color:#fff;text-decoration:none;font-weight:800;font-size:1.2rem;padding:1rem;border-radius:.9rem;box-shadow:0 10px 25px rgba(108,92,231,.3);transition:transform .2s ease,box-shadow .2s ease}
+        .cta{display:block;background:linear-gradient(135deg,#6c5ce7,#5a4bdb);color:#fff;text-decoration:none;font-weight:800;font-size:1.2rem;padding:1rem;border-radius:.9rem;box-shadow:0 10px 25px rgba(108,92,231,.3);transition:transform .2s ease,box-shadow .2s ease;border:none;cursor:pointer}
         .cta:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(108,92,231,.45)}
         .note{margin-top:1.5rem;font-size:.85rem;color:#9ca3af;line-height:1.5}
         @media (max-width:480px){h1{font-size:1.6rem}.card{padding:1.4rem}}
@@ -67,8 +82,8 @@
             </ul>
         </div>
 
-        <!-- === CTA Tujuan — Ubah jika perlu === -->
-        <a href="https://app.glitchy.com/offers/4889"
+        <!-- === CTA DENGAN PENERUSAN UTM OTOMATIS === -->
+        <a id="main-cta" href="https://app.glitchy.com/offers/4889"
            class="cta"
            target="_blank"
            rel="noopener noreferrer">
@@ -80,5 +95,25 @@
             Must be a US resident to qualify. Terms apply.
         </p>
     </div>
+
+    <!-- ==============================================
+         OTOMATIS TAMBAHKAN UTM KE LINK TUJUAN
+         ============================================== -->
+    <script>
+    (function(){
+      const params = new URLSearchParams(window.location.search);
+      const utmKeys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
+      const cta = document.getElementById('main-cta');
+      
+      if (cta && params.toString()) {
+        const targetUrl = new URL(cta.href);
+        utmKeys.forEach(key => {
+          const val = params.get(key);
+          if (val) targetUrl.searchParams.set(key, val);
+        });
+        cta.href = targetUrl.toString();
+      }
+    })();
+    </script>
 </body>
 </html>
