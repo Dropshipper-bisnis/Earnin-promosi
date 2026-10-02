@@ -6,7 +6,17 @@
     <title>EarnIn — Cash Advance | Get Paid Early</title>
 
     <!-- ==============================================
-         GOOGLE ANALYTICS — ID: G-WCKFWWQ16F
+         GOOGLE TAG MANAGER — GTM-PWNZRVK9
+         ============================================== -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PWNZRVK9');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- ==============================================
+         GOOGLE ANALYTICS — G-WCKFWWQ16F
          ============================================== -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCKFWWQ16F"></script>
     <script>
@@ -14,7 +24,6 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       
-      // Baca parameter UTM dari URL & kirim ke GA
       const params = new URLSearchParams(window.location.search);
       const utm = {
         source: params.get('utm_source') || 'direct',
@@ -32,7 +41,7 @@
     </script>
 
     <!-- ==============================================
-         META PIXEL — ID: 1431572502445616
+         META PIXEL — 1431572502445616
          ============================================== -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -61,13 +70,21 @@
         .card ul{list-style:none}
         .card li{padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:1rem}
         .card li:last-child{border-bottom:none}
-        .cta{display:block;background:linear-gradient(135deg,#6c5ce7,#5a4bdb);color:#fff;text-decoration:none;font-weight:800;font-size:1.2rem;padding:1rem;border-radius:.9rem;box-shadow:0 10px 25px rgba(108,92,231,.3);transition:transform .2s ease,box-shadow .2s ease;border:none;cursor:pointer}
+        .cta{display:block;background:linear-gradient(135deg,#6c5ce7,#5a4bdb);color:#fff;text-decoration:none;font-weight:800;font-size:1.2rem;padding:1rem;border-radius:.9rem;box-shadow:0 10px 25px rgba(108,92,231,.3);transition:transform .2s ease,box-shadow .2s ease}
         .cta:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(108,92,231,.45)}
         .note{margin-top:1.5rem;font-size:.85rem;color:#9ca3af;line-height:1.5}
         @media (max-width:480px){h1{font-size:1.6rem}.card{padding:1.4rem}}
     </style>
 </head>
 <body>
+    <!-- ==============================================
+         ✅ GTM (noscript) — PERSIS SETELAH <body>
+         ============================================== -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWNZRVK9"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <div class="container">
         <span class="badge">✅ APPROVED OFFER</span>
         <h1>EarnIn — Cash Advance</h1>
@@ -75,14 +92,14 @@
         <div class="us-only">🇺🇸 Available Only in the United States</div>
         <div class="card">
             <ul>
-                <li>✅ Access wages you’ve already earned</li>
+                <li>✅ Access wages you've already earned</li>
                 <li>✅ Up to $500 — No interest, no hidden fees</li>
                 <li>✅ No credit check</li>
                 <li>✅ Fast approval & trusted by millions</li>
             </ul>
         </div>
 
-        <!-- === CTA DENGAN PENERUSAN UTM OTOMATIS === -->
+        <!-- === CTA — UTM Otomatis Diteruskan === -->
         <a id="main-cta" href="https://app.glitchy.com/offers/4889"
            class="cta"
            target="_blank"
@@ -96,23 +113,22 @@
         </p>
     </div>
 
-    <!-- ==============================================
-         OTOMATIS TAMBAHKAN UTM KE LINK TUJUAN
-         ============================================== -->
+    <!-- UTM Penerusan Otomatis -->
     <script>
     (function(){
       const params = new URLSearchParams(window.location.search);
+      if (!params.toString()) return;
+      
       const utmKeys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
       const cta = document.getElementById('main-cta');
+      if (!cta) return;
       
-      if (cta && params.toString()) {
-        const targetUrl = new URL(cta.href);
-        utmKeys.forEach(key => {
-          const val = params.get(key);
-          if (val) targetUrl.searchParams.set(key, val);
-        });
-        cta.href = targetUrl.toString();
-      }
+      const targetUrl = new URL(cta.href);
+      utmKeys.forEach(key => {
+        const val = params.get(key);
+        if (val) targetUrl.searchParams.set(key, val);
+      });
+      cta.href = targetUrl.toString();
     })();
     </script>
 </body>
